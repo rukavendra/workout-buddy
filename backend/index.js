@@ -16,7 +16,7 @@ const app = express()
 
 // }))
 
-app.use(cors())
+app.use(cors({origin: 'https://workout-buddy-sand.vercel.app'}))
 
 
 app.use(express.json())
