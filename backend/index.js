@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -7,16 +6,25 @@ const userRoutes = require('./routes/user')
 
 const app = express()
 
+var allowedOrigins = ['http://localhost:3000', 
+                      'https://workout-buddy-sand.vercel.app', 
+                      'https://workout-buddy-app-tau.vercel.app'];
 
-//Middle ware
-// app.use(cors({
-//     origin: 'https://workout-buddy-app-tau.vercel.app',
-//     methods: 'GET,POST,PUT,DELETE',
-//     credentials: true,
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            var msg = 'The CORS policy for this site does not ' +
+                      'allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    }
+}));
 
-// }))
+app.options('*', cors()) // include before other routes
 
-app.use(cors({origin: 'https://workout-buddy-sand.vercel.app'}))
+// rest of your code
 
 
 app.use(express.json())
