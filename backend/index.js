@@ -38,20 +38,13 @@ app.use(
   })
 );
 
-app.options("*", cors()); // include before other routes
-
-// rest of your code
-
 app.use(express.json());
-
-// app.use('/', (req,res)=>res.send("Welcome to Workout Buddy"))
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
 
-// route
 app.use("/workouts", workoutRoutes);
 app.use("/user", userRoutes);
 
