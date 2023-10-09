@@ -11,7 +11,7 @@ const WorkoutDetails = ({workout}) => {
     if(!user){
       return
     }
-    const response = await fetch(`http://localhost:4000/workouts/${workout._id}`,{method:"DELETE",headers: {'Authorization': `Bearer ${user.token}`}})
+    const response = await fetch(`https://workout-buddy-backend-nu.vercel.app/workouts/${workout._id}`,{mode: 'cors', method:"DELETE",headers: {'Authorization': `Bearer ${user.token}`}})
     const json = await response.json()
     if(response.ok){
       dispatch({type:'DELETE_WORKOUT',payload:json})
@@ -19,7 +19,7 @@ const WorkoutDetails = ({workout}) => {
   }
 
   const handleUpdate= async()=>{
-    const response= await fetch('http://localhost:4000/workouts'+workout._id, {method: 'PATCH'})
+    const response= await fetch('https://workout-buddy-backend-nu.vercel.app/workouts'+workout._id, {mode: 'cors', method: 'PATCH'})
     const json = await response.json()
     if(response.ok){
       dispatch({type:'UPDATE_WORKOUT', payload:json })

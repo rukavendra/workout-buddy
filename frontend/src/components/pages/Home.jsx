@@ -9,7 +9,7 @@ const Home = () => {
     const {user}= useAuthContext()
     useEffect(()=>{
         if(user){
-        fetch('http://localhost:4000/workouts',{headers: {'Authorization': `Bearer ${user.token}`}})
+        fetch('https://workout-buddy-backend-nu.vercel.app/workouts',{ mode: 'cors', headers: {'Authorization': `Bearer ${user.token}`}})
         .then((res)=>res.json())
         .then(res=>{
                 dispatch({type:'SET_WORKOUTS', payload: res})

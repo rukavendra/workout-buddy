@@ -19,7 +19,8 @@ const Workoutform = () => {
           return
         }
 
-        const response = await fetch('http://localhost:4000/workouts', {
+        const response = await fetch('https://workout-buddy-backend-nu.vercel.app/workouts', {
+            mode: 'cors',
             method: "POST",
             body: JSON.stringify(workout),
             headers:{
