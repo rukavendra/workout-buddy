@@ -9,7 +9,7 @@ const Home = () => {
     const {user}= useAuthContext()
     useEffect(()=>{
         if(user){
-        fetch('/workouts',{ headers: {'Authorization': `Bearer ${user.token}`}})
+        fetch('https://workout-app-xuea.onrender.com/workouts',{ headers: {'Authorization': `Bearer ${user.token}`}})
         .then((res)=>res.json())
         .then(res=>{
                 dispatch({type:'SET_WORKOUTS', payload: res})

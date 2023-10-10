@@ -19,7 +19,7 @@ const Workoutform = () => {
           return
         }
 
-        const response = await fetch('/workouts', {
+        const response = await fetch('https://workout-app-xuea.onrender.com/workouts', {
             method: "POST",
             body: JSON.stringify(workout),
             headers:{
