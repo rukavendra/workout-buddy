@@ -21,6 +21,13 @@ const app = express()
 
 app.use(express.json())
 
+app.use(cors({
+    origin: true, // allow all origins
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 // app.use('/', (req,res)=>res.send("Welcome to Workout Buddy"))
 
 app.use((req,res,next)=>{
